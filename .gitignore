@@ -17,3 +17,5 @@ mergenet.yaml
 faucet.yml
 reverse_proxy.yml
 dshackle.yml
+scripts/quick-run/merge-devnets/beacon_data
+scripts/quick-run/merge-devnets/execution_data
