@@ -1,5 +1,5 @@
 version: "1"
 rules:
   - base: master
-    upstream: parithosh/consensus-deployment-ansible:master    # change `wei` to the owner of upstream repo
+    upstream: parithosh:master    # change `wei` to the owner of upstream repo
     mergeMethod: merge
