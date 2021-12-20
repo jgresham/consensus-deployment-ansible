@@ -1,5 +1,6 @@
+# validate here https://pull.git.ci/check/jgresham/consensus-deployment-ansible
 version: "1"
 rules:
   - base: master
-    upstream: parithosh:master    # change `wei` to the owner of upstream repo
+    upstream: parithosh:master    # parithosh is the owner of upstream repo
     mergeMethod: merge
