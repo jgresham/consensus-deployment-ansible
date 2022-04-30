@@ -1,5 +1,5 @@
 eth1_client_name: besu
-eth1_image_name: hyperledger/besu:22.4.0-RC2-SNAPSHOT
+eth1_image_name: hyperledger/besu:develop
 execution_endpoint: http://127.0.0.1:{{eth1_engine_snoop_port}}
 
 home_dir: "/home/{{ansible_user}}"
@@ -19,9 +19,9 @@ eth1_volumes:
   - "{{testnet_dir}}:/networkdata"
   - "{{home_dir}}/jwtsecret:/jwtsecret"
 
-#######################
-# NO AUTH SUPPORT YET
-#######################
+eth1_env:
+  JDWP_OPTS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
+  NATIVE_MEMORY_OPTS: "-XX:NativeMemoryTracking=detail -XX:+UnlockDiagnosticVMOptions -XX:+PrintNMTStatistics"
 
 eth1_start_args: >
   --data-path="/eth1data/data"
@@ -46,7 +46,6 @@ eth1_start_args: >
   --p2p-host={{ansible_host}}
   --sync-mode=FAST
   --data-storage-format="BONSAI"
-  --miner-enabled=true
   --engine-jwt-enabled
   --engine-jwt-secret=/jwtsecret
   --ethstats={{inventory_hostname}}:mainnetshadowfork2@ethstats.mainnetshadowfork2.ethdevops.io:3000
